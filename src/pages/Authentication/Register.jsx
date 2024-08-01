@@ -4,10 +4,14 @@ import {
     Radio,
     RadioGroup,
     TextField,
+    Typography,
   } from "@mui/material";
   import { ErrorMessage, Formik, Form, Field } from "formik";
   import React from "react";
+import { useDispatch } from "react-redux";
   import * as Yup from "yup";
+import { registerUserAction } from "../../Redux/Auth/auth.action";
+import { useNavigate } from "react-router-dom";
   
   const initialValues = {
     firstName: "",
@@ -28,12 +32,17 @@ import {
   });
   
   const Register = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
+
     const handleSubmit = (values) => {
-      console.log("Form values:", values);
+      console.log("Hande submit:", values);
+      dispatch(registerUserAction({
+        data:values}))
     };
   
     return (
-      <div>
+      <>
         <Formik
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
@@ -138,8 +147,14 @@ import {
               </div>
             </Form>
           )}
+          
         </Formik>
+        <div className="flex gap-2 items-center justify-center pt-5">
+        <p>if you already have an account ?</p>
+        <Button onClick={()=>navigate("/login")}> Login</Button>
       </div>
+        
+      </>
     );
   };
   
