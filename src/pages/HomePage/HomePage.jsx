@@ -12,7 +12,7 @@ function HomePage() {
 const location=useLocation();
 
   return (
-    <div className='px-20'>
+    <div className='px-20 '>
         <Grid container spacing={0}>
 
             {/* ------sidebar------ */}

@@ -13,7 +13,7 @@ function Sidebar() {
   };
 
   return (
-    <Card className='mt-3 card h-[660px] flex flex-col justify-between'>
+    <Card className=' pb-2 pt-3 card h-[690px] flex flex-col justify-between'>
 
     <div className="space-y-8 pl-5"></div>
 
