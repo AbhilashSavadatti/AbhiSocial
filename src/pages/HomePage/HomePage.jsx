@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Sidebar from '../../components/Sidebar'
 import { Grid } from '@mui/material'
 import { Route, Routes, useLocation } from 'react-router-dom'
@@ -7,9 +7,18 @@ import Reels from '../../components/Reels/Reels';
 import CreateReelsForm from '../../components/Reels/CreateReelsForm';
 import Profile from '../Profile/Profile';
 import HomeRight from '../../components/HomeRight/HomeRight';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 function HomePage() {
 const location=useLocation();
+
+
+const {auth} = useSelector(store=>store);
+
+console.log("auth",auth);
+
+const dispatch = useDispatch();
 
   return (
     <div className='px-20 '>
@@ -37,12 +46,14 @@ const location=useLocation();
 
         </Grid>
 
-        <Grid item lg={3} className='relative'>
+        {location.pathname==="/" && <Grid item lg={3} className='relative'>
 
-            <div className="sticky top-0 w-full"></div>
+<div className="sticky top-0 w-full"> <HomeRight/></div>
 
-            <HomeRight/>
-        </Grid>
+
+</Grid>}
+
+       
 
 
 
