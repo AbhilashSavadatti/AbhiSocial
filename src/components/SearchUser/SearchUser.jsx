@@ -1,11 +1,18 @@
 import { Avatar, Card, CardHeader } from "@mui/material";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { searchUser } from "../../Redux/Auth/auth.action";
 
 const SearchUser = () => {
   const [username,setUsername] = useState('')
+  const dispatch =useDispatch();
+  const {auth} = useSelector(store=>store)
+
+
   const handleSearchUser = (e) => {
     setUsername(e.target.value)
     console.log("search user .......");
+    dispatch(searchUser(username))
   };
   const handleClick = (id) => {
     console.log(id);
@@ -20,7 +27,8 @@ const SearchUser = () => {
           onChange={handleSearchUser}
         />
         {username && (
-        <Card className="absolute w-full z-10 top-[4.5rem] cursor-pointer">
+        auth.searchUser.map((item)=>
+          <Card key="{item.id}" className="absolute w-full z-10 top-[4.5rem] cursor-pointer">
           <CardHeader
             onClick={() => {
               handleClick();
@@ -29,10 +37,10 @@ const SearchUser = () => {
             avatar={
               <Avatar src="https://cdn.pixabay.com/photo/2022/03/14/15/39/skull-7068431_640.png" />
             }
-            title="Abhilash s"
-            subheader={"Abhilash"}
+            title={item.firstName + " "+ item.lastName }
+            subheader={item.firstName.toLowerCase() + "_"+ item.lastName.toLowerCase() }
           />
-        </Card>
+        </Card>)
       )}
       </div>
       

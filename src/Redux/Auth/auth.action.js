@@ -26,10 +26,10 @@ export const loginUserAction = (loginData) => async (dispatch) => {
         loginData.data
       );
   
-      console.log("API Response Data:", data); // Ensure `data.token` is correct
+      console.log("API Response Data:", data);
       if (data.token) {
         localStorage.setItem("jwt", data.token);
-        console.log("JWT stored in localStorage:", localStorage.getItem("jwt")); // Verify storage
+        console.log("JWT stored in localStorage:", localStorage.getItem("jwt")); 
         dispatch({ type: LOGIN_SUCCESS, payload: data.token });
       } else {
         console.error("JWT not found in API response");
@@ -49,10 +49,10 @@ export const loginUserAction = (loginData) => async (dispatch) => {
         loginData.data
       );
   
-      console.log("API Response Data:", data); // Ensure `data.token` is correct
+      console.log("API Response Data:", data); 
       if (data.token) {
         localStorage.setItem("jwt", data.token);
-        console.log("JWT stored in localStorage:", localStorage.getItem("jwt")); // Verify storage
+        console.log("JWT stored in localStorage:", localStorage.getItem("jwt")); 
         dispatch({ type: REGISTER_SUCCESS, payload: data.token });
       } else {
         console.error("JWT not found in API response");
@@ -111,7 +111,7 @@ export const updateProfileAction = (reqData) => async (dispatch) => {
   export const searchUser = (query) => async (dispatch) => {
     dispatch({ type: SEARCH_USER_REQUEST });
     try {
-      const { data } = await api.get(`/api/users/search?=${query}`);
+      const { data } = await api.get(`/api/users/search?query=${query}`);
   
       console.log("------search user------", data);
       dispatch({ type: SEARCH_USER_SUCCESS, payload: data });

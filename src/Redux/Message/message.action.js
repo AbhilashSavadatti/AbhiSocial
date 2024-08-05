@@ -40,7 +40,7 @@ export const createChat = (chat) => async (dispatch) => {
   export const getAllChats = (chat) => async (dispatch) => {
     dispatch({ type: GET_ALL_CHATS_REQUEST });
     try {
-      const { data } = await Api.post(`/api/chats/user`, chat);
+      const { data } = await Api.get(`/api/chats/user`, chat);
       console.log("get all  chat", data);
       dispatch({ type: GET_ALL_CHATS_SUCCESS, payload: data });
     } catch (error) {
