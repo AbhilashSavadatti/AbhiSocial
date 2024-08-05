@@ -21,6 +21,10 @@ const navigate = useNavigate()
 
     if(item.title=="Profile")
       navigate(`/profile/${auth.user?.id}`)
+    else {
+  
+      navigate(item.path);
+    }
 
 
   }

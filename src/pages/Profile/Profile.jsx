@@ -18,6 +18,10 @@ const reels = [1, 1, 1, 1];
 const savedPost = [1, 1, 1, 1];
 
 const Profile = () => {
+  const { posts } = useSelector(state => state.post);
+
+  console.log("logged"+posts)
+
   const [open, setOpen] = React.useState(false);
   const handleOpenProfileModal = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -63,7 +67,7 @@ const Profile = () => {
         </div>
 
         <div className="p-5">
-          {/* <h1 className=""> {auth.user?.firstName+ " " + auth.user.lastname}</h1>
+          {/* <h1 className=""> {auth.user?.firstName+ " " + auth.user?.lastname}</h1>
           <p>@`${auth.user?.firstName.toLowerCase()} ${auth.user?.lastname.toLowerCase()}`</p> */}
              <p className='py-1 font-bold text-xl'>{auth.user?.firstName + " " +auth.user?.lastName }</p>
              <p className='opacity-45'>@{auth.user?.firstName.toLowerCase() + " " +auth.user?.lastName.toLowerCase()  }</p>
@@ -96,12 +100,15 @@ const Profile = () => {
             </Tabs>
           </Box>
 
+      
+         
           <div className="flex justify-center">
+            
             {value === "post" ? (
               <div className="space-y-5 w-[70%] my-10">
                 {posts.map((item) => (
                   <div className="border rounded-md border-slate-100">
-                    <PostCard />
+                    <PostCard item={item}  />
                   </div>
                 ))}
               </div>

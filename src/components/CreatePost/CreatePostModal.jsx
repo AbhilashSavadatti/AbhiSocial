@@ -14,6 +14,8 @@ import {
   import VideocamIcon from '@mui/icons-material/Videocam';
   import VideoCallIcon from "@mui/icons-material/VideoCall";
   import { uploadToCloudinary } from "../../utils/uploadToCloudniry";
+import { useDispatch } from "react-redux";
+import { createCommentAction, createPostAction } from "../../Redux/Post/post.action";
   
   const style = {
     position: "absolute",
@@ -32,6 +34,8 @@ import {
     const [selectedImage, setSelectedImage] = useState();
     const [selectedVideo, setSelectedVideo] = useState();
     const [isLoading, setIsLoading] = useState(false);
+
+    const dispatch = useDispatch() 
   
     const handleSelectImage = async (event) => {
       setIsLoading(true);
@@ -59,10 +63,13 @@ import {
       },
       onSubmit: (values) => {
         console.log("formik values", values);
+        dispatch(createPostAction(values))
         handleClose(); 
       },
     });
-  
+
+
+   
     return (
       <Modal
         open={open}
