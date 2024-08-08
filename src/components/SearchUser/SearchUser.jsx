@@ -2,6 +2,7 @@ import { Avatar, Card, CardHeader } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchUser } from "../../Redux/Auth/auth.action";
+import { createChat } from "../../Redux/Message/message.action";
 
 const SearchUser = () => {
   const [username,setUsername] = useState('')
@@ -11,11 +12,11 @@ const SearchUser = () => {
 
   const handleSearchUser = (e) => {
     setUsername(e.target.value)
-    console.log("search user .......");
+    console.log("search user .......",auth.searchUser);
     dispatch(searchUser(username))
   };
   const handleClick = (id) => {
-    console.log(id);
+   dispatch(createChat({userId:id}))
   };
   return (
     <div>
@@ -31,7 +32,7 @@ const SearchUser = () => {
           <Card key="{item.id}" className="absolute w-full z-10 top-[4.5rem] cursor-pointer">
           <CardHeader
             onClick={() => {
-              handleClick();
+              handleClick(item.id);
               setUsername("")
             }}
             avatar={
