@@ -12,6 +12,7 @@ import { Box, Button, CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Palette } from '@mui/icons-material';
 import VerifiedSuccess from './Components/VerifiedSuccess/VerifiedSuccess';
+import Message from './Components/Message/Message';
 
 function App() {
   const dispatch=useDispatch();
@@ -40,6 +41,7 @@ setCurrentTheme(localStorage.getItem("theme"))
         {/* <Button variant='content' color='success'>Check Theme</Button> */}
           <Routes>
         <Route path='/*' element={ auth.user?.fullName? <HomePage/>:<Authentication/>}></Route>
+        
         <Route path='/signin' element={<Authentication/>}></Route>
         <Route path='/signup' element={<Authentication/>}></Route>
         <Route path='/verified' element={<VerifiedSuccess/>}></Route>

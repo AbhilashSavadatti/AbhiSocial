@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 import Profile from './Profile/Profile'
 import TwitDetail from './Home/MiddlePart/TwitDetail'
+import Message from './Message/Message'
 
 const HomePage = () => {
   const {auth,theme}=useSelector(store=>store);
@@ -22,6 +23,7 @@ const HomePage = () => {
             <Route path='/' element={<HomeSection/>}></Route>
             <Route path='/home' element={<HomeSection/>}></Route>
             {/* <Route path='/profile' element={<Profile/>}></Route> */}
+            <Route path='/messages' element={<Message/>}></Route>
             <Route path='/profile/:id' element={<Profile/>}></Route>
             <Route path='/twit/:id' element={<TwitDetail/>}></Route>
           </Routes>
